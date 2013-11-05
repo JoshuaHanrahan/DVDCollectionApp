@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?scenebuilder-background-color 0x330000ff?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="720.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml" fx:controller="dvdcollectionapp.view.DvdcollectionappfxmlController">
+  <children>
+    <SplitPane dividerPositions="0.44428969359331477" focusTraversable="true" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color:#312e2e" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <TableView fx:id="dvdTable" prefHeight="598.0" prefWidth="316.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+              <columns>
+                <TableColumn minWidth="100.0" prefWidth="75.0" text="DVD Title" fx:id="titleColumn" />
+              </columns>
+            </TableView>
+          </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <BorderPane prefHeight="598.0" prefWidth="396.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+              <left>
+                <TabPane fx:id="DVDTabPane" prefHeight="598.0" prefWidth="383.0" tabClosingPolicy="UNAVAILABLE">
+                  <tabs>
+                    <Tab fx:id="welcomeTab" text="Welcome">
+                      <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color:#312e2e">
+                          <children>
+                            <ImageView fitHeight="282.0" fitWidth="376.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                <Image url="@images/dvdLogo.jpg" preserveRatio="false" smooth="false" />
+                              </image>
+                            </ImageView>
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </Tab>
+                    <Tab fx:id="detailsTab" onSelectionChanged="#handleDVDDetailsTabSelection" text="Details">
+                      <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="102.0" prefWidth="376.0">
+                          <children>
+                            <GridPane prefHeight="423.0" prefWidth="376.0" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <children>
+                                <Label text="Title" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                  <GridPane.margin>
+                                    <Insets left="20.0" fx:id="x1" />
+                                  </GridPane.margin>
+                                </Label>
+                                <Label alignment="TOP_LEFT" text="Genre" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="1">
+                                  <labelFor>
+                                    <TextField fx:id="genreField" editable="false" onKeyTyped="#handleStringField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                  </labelFor>
+                                </Label>
+                                <Label text="Rating" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="2" />
+                                <Label text="Stars" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="3" />
+                                <Label text="Year" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="4" />
+                                <Label text="Blurb" GridPane.columnIndex="0" GridPane.margin="$x1" GridPane.rowIndex="5" />
+                                <Label text="Image URL" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                                  <GridPane.margin>
+                                    <Insets left="20.0" fx:id="x1" />
+                                  </GridPane.margin>
+                                </Label>
+                                <TextField fx:id="titleField" editable="false" onKeyTyped="#handleStringField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <fx:reference source="genreField" />
+                                <TextField fx:id="ratingField" editable="false" onKeyTyped="#handleStringField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <TextField fx:id="starsField" editable="false" onKeyTyped="#handleStringField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <TextField fx:id="yearField" editable="false" onKeyTyped="#handleDigitField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                <TextField fx:id="blurbField" editable="false" onKeyTyped="#handleStringField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                <TextField id="" fx:id="imageURLField" editable="false" onKeyTyped="#handleStringField" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="94.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="282.0" minWidth="10.0" prefWidth="282.0" />
+                              </columnConstraints>
+                              <padding>
+                                <Insets right="10.0" />
+                              </padding>
+                              <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <HBox id="HBox" alignment="CENTER" layoutX="3.0" layoutY="447.0" prefWidth="368.0" spacing="5.0">
+                              <children>
+                                <TextField fx:id="messageField" prefWidth="200.0" visible="false" />
+                                <Button fx:id="okButton" mnemonicParsing="false" onAction="#handleEditDone" text="OK" visible="false" />
+                                <Button fx:id="resetButton" mnemonicParsing="false" onAction="#handleResetDVD" text="Reset" visible="false" />
+                                <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleEditCancel" text="Cancel" visible="false" />
+                              </children>
+                            </HBox>
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </Tab>
+                    <Tab fx:id="imageTab" onSelectionChanged="#handleDVDImageSelection" text="Cover Image">
+                      <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                          <children>
+                            <ImageView fx:id="dvdImage" fitHeight="277.49996938496696" fitWidth="369.9999694824219" layoutX="2.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </Tab>
+                    <Tab fx:id="genreTab" text="Genre Listings">
+                      <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                          <children>
+                            <Label layoutX="14.0" layoutY="20.0" text="Please choose a genre from the drop box" />
+                            <ComboBox fx:id="genreChoiceBox" layoutX="27.0" layoutY="63.0" prefHeight="21.0" prefWidth="144.0" promptText="Choose a genre...">
+                              <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                  <String fx:value="Item 1" />
+                                  <String fx:value="Item 2" />
+                                  <String fx:value="Item 3" />
+                                </FXCollections>
+                              </items>
+                            </ComboBox>
+                            <TableView id="g" fx:id="genreListView" layoutX="17.0" layoutY="99.0" prefHeight="352.0" prefWidth="296.0">
+                              <columns>
+                                <TableColumn prefWidth="75.0" text="DVD Title" fx:id="genreTitleColumn" />
+                              </columns>
+                            </TableView>
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </Tab>
+                  </tabs>
+                </TabPane>
+              </left>
+              <top>
+                <AnchorPane prefHeight="65.0" prefWidth="200.0">
+                  <children>
+                    <HBox prefHeight="32.0" prefWidth="98.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="0.0">
+                      <children>
+                        <MenuButton fx:id="fileMenuButton" mnemonicParsing="false" prefHeight="23.0" prefWidth="71.0" text="File">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#handleOpenFile" text="Open" fx:id="openMenuItem" />
+                            <MenuItem mnemonicParsing="false" onAction="#handleSaveFile" text="Save" fx:id="saveMenuItem" />
+                            <MenuItem mnemonicParsing="false" onAction="#handleSaveAsFile" text="Save As" fx:id="saveAsMenuItem" />
+                            <MenuItem mnemonicParsing="false" onAction="#handleExitFile" text="Exit" fx:id="exitMenuItem" />
+                          </items>
+                        </MenuButton>
+                      </children>
+                    </HBox>
+                    <ImageView fitHeight="50.52651284529973" fitWidth="309.1033630371094" layoutX="73.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                        <Image url="@images/dvdLogo.jpg" preserveRatio="false" smooth="false" />
+                      </image>
+                    </ImageView>
+                    <HBox layoutX="2.0" layoutY="32.0" prefHeight="39.0" prefWidth="84.0">
+                      <children>
+                        <MenuButton minHeight="19.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="70.0" text="DVD">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#handleNewDVD" text="New" fx:id="newMenuItem" />
+                            <MenuItem mnemonicParsing="false" onAction="#handleEditDVD" text="Edit" fx:id="editMenuItem" />
+                            <MenuItem mnemonicParsing="false" onAction="#handleDeleteDVD" text="Delete" fx:id="deleteMenuItem" />
+                          </items>
+                        </MenuButton>
+                      </children>
+                    </HBox>
+                  </children>
+                </AnchorPane>
+              </top>
+            </BorderPane>
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+  </children>
+</AnchorPane>
